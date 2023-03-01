@@ -1,0 +1,67 @@
+html {
+    scroll-behavior: smooth;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*HEADER*/
+.barra{
+background: linear-gradient(90deg, rgba(26,26,28,0.7399334733893557) 0%, rgba(25,24,28,0.9023984593837535) 18%, rgba(0,0,9,0.5634628851540616) 40%, rgba(19,20,22,0.908000700280112) 70%, rgba(14,17,18,0.6334908963585435) 86%, rgba(10,12,17,0.8855917366946778)
+100%);
+display: flex;
+justify-content: space-around;
+height: 55px;
+}
+.logo{
+    color: #ffffff;
+}
+.nav-menu ul{
+    display: flex;
+    justify-content: center;
+} 
+.nav-menu ul .item-menu{
+    margin: 15px;
+    align-items: center;
+    list-style-type: none;
+}
+.item-menu a{
+    text-decoration: none;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+/*MAIN*/
+.cont-entrada{
+    font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+.p-dos{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding: 25px;
+}
+.btn-prestamo{
+    color: #000000;
+}
+.img-carrusel{
+    height: 480px;
+    width: 100%;
+}
+.img-carrito{
+    width: 200px;
+    height: 200px;
+}
+/*FOOTER*/
+.iconos{
+    font-size: 25px;
+    margin: 8px;
+}
+.iconos a{
+    color: #ffffff;
+    margin: 10px 15px;
+    text-align: center;
+}

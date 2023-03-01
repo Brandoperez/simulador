@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Simulador</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="barra">
+                <div class="logo">
+                    <h1>CrediSpecial</h1>
+                </div>
+                <div class="nav-menu">
+                    <ul>
+                        <li class="item-menu">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="item-menu">
+                            <a href="#">Preguntas Frecuentes</a>
+                        </li>
+                        <li class="item-menu">
+                            <a href="#">Nosotros</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 my-5">
+                    <p class="cont-entrada">¿Querés viajar en vacasiones, comprar el auto de tus sueños o sencillamente necesitás dinero para
+                        pagar tus deudas? ¡Tenemos la solución para vos!
+                    </p>
+                    <p class="p-dos">Simulá tu préstamo personal</p>
+                    
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 col-12">
+                    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="img/01-carrusel.png" alt="" class="img-carrusel">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="img/02-carrusel.jpg" alt="" class="img-carrusel">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="img/03-carrusel.jpg" alt="" class="img-carrusel">
+                          </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+                </div>
+                <div class="col-sm-6 col-12 pb-5">
+
+                    <form action="">
+                         <div class="pb-2">
+                        <label for="">Nombre:</label>
+                        <input type="text" id="txtNombre" class="form-control shadow" required>
+                    </div>
+                    <div class="pb-2">
+                        <label for="">Apellido:</label>
+                        <input type="text" id="txtApellido" class="form-control shadow" required>
+                    </div>
+                    <div class="pb-2">
+                        <label for="">Edad:</label>
+                        <input type="text" id="txtEdad" class="form-control shadow" required>
+                    </div>
+                    <div class="pb-4">
+                        <a href="#" class="btn btn-primary" id="btn_registarse">Registarse</a>
+                    </div>
+                    <div id="mensaje"></div>
+                    </form>
+                    <form action="" id="formConsulta">
+                        <div class="pb-2">
+                            <label for="">Monto a Solicitar:</label>
+                            <input type="text" id="txtCantidad" class="form-control shadow">
+                        </div>
+                        <div class="pb-3 form-group">
+                            <label for="">Cantidad Cuotas</label>
+                            <select class="form-control" id="selCuotas">
+                                <option value="0"></option>
+                                <option value="3">3</option>
+                                <option value="6">6</option>
+                                <option value="9">9</option>
+                                <option value="12">12</option>
+                            </select>
+                        </div>
+                        <div>
+                            <a href="#" type="button" class="btn btn-primary" id="btn_consultar">Consultar</a>
+                        </div>
+                        <div id="msj-consultar">
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <section >
+                <div class="container" id="ResConsulta">
+                    <div class="row">
+                        <div class="col-12 mx-3 mt-5 px-4">
+                            <table class="table table-hover" id="resTabla">
+                                <thead>
+                                    <tr>
+                                        <td>Nombre</td>
+                                        <td>Apellido</td>
+                                        <td>Edad</td>
+                                        <td>Monto</td>
+                                        <td>Cuotas</td>
+                                        <td>Total Cuotas</td>
+                                        <td>Valor Total</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla">
+                                    
+                                </tbody>
+                </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+    </main>
+
+    <footer class="barra">
+        <div class="iconos">
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-whatsapp"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+        </div>
+        
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="simulador.js"></script>
+</body>
+
+
+</html>
