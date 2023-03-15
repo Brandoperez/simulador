@@ -1,5 +1,5 @@
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
 }
 *{
     margin: 0;
@@ -45,7 +45,14 @@ height: 55px;
     padding: 25px;
 }
 .btn-prestamo{
-    color: #000000;
+    background-color: #0d6efd!important;
+    color: #ffffff;
+    margin: 10px;
+    padding: 10px;
+}
+.btn-prestamo:hover{
+    color: #ffffff;
+    cursor: pointer;
 }
 .img-carrusel{
     height: 480px;
@@ -55,13 +62,36 @@ height: 55px;
     width: 200px;
     height: 200px;
 }
+.tabla{
+    background-color: linear-gradient(90deg, rgba(26,26,28,0.7399334733893557) 0%, rgba(25,24,28,0.9023984593837535) 18%, rgba(0,0,9,0.5634628851540616) 40%, rgba(19,20,22,0.908000700280112) 70%, rgba(14,17,18,0.6334908963585435) 86%, rgba(10,12,17,0.8855917366946778)
+    100%);
+}
+
 /*FOOTER*/
 .iconos{
     font-size: 25px;
     margin: 8px;
 }
 .iconos a{
-    color: #ffffff;
+    color: #d9d4d4;
     margin: 10px 15px;
     text-align: center;
+}
+/*API*/
+h2{
+    text-align: center;
+    margin: 20px;
+    color: #000000;
+}
+.bg-gris{
+    background-color:  #d3d1d1;
+}
+.dolar-api ul .dolar-li{
+list-style-type: none;
+text-align: right;
+display: flex;
+justify-content: center;
+}
+.dolar-li span{
+    margin-left: 15px;
 }

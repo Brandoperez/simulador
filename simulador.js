@@ -1,3 +1,4 @@
+
 let listado_usuarios = [];
 
 function nuevoUsuario(){
@@ -30,20 +31,44 @@ function validarUsuario(){
 
     let msg = document.getElementById("mensaje")
 
-        if(nombre != "" && apellido != "" && edad >= 18){
+        if(nombre != "" && apellido != "" && edad >= 18 & edad != ""){
             let mensaje = document.createElement("div");
-                mensaje.innerHTML = `<p class="alert alert-success">Registro exitoso</p>`;
+            Toastify({
+                text: "Registro Exitoso",
+                duration: 2000,
+                gravity: "bottom",
+                position: "right",
+                style: {
+                  background: "#0d6efd",
+                  color: "#ffffff",
+                }
+              }).showToast();
 
                 msg.append(mensaje);
 
         }else{
             let mensaje = document.createElement("div");
-                mensaje.innerHTML = `<p class="alert alert-danger">Debes ser mayor de edad para continuar</p>`;
+            Toastify({
+                text: "Debes ser mayor de edad para Continuar.",
+                duration: 2000,
+                gravity: "bottom",
+                position: "right",
+                style: {
+                  background: "#de1b02",
+                  color: "#ffffff",
+                }
+              }).showToast();
 
                 msg.append(mensaje);
 
         }
 }
+	
+$(document).ready(function() {
+  $('#btn_registarse').click(function() {
+      $('input[type="text"').val('');
+  });
+});
 
 
 function calcularPrestamo(monto, cuotas){
@@ -71,7 +96,7 @@ function consultarPrestamo(e){
     let monto = parseInt(document.getElementById("txtCantidad").value);
     let cuotas = parseInt(document.getElementById("selCuotas").value);
     let total = monto + calcularPrestamo(monto, cuotas);
-    let pago_total = total + cuotas;
+    let pago_total = total * cuotas;
 
     let resultadoConsulta = {
         monto: monto,
@@ -83,13 +108,33 @@ function consultarPrestamo(e){
     let msj_consultar = document.getElementById("msj-consultar");
     if(monto != "" && cuotas != ""){
         let mensaje = document.createElement("div");
-            mensaje.innerHTML = `<p class="alert alert-success">Consulta exitosa</p>`;
+            mensaje.innerHTML = ""
+            Toastify({
+                text: "Consulta Exitosa",
+                duration: 2000,
+                gravity: "bottom",
+                position: "right",
+                style: {
+                  background: "#0d6efd",
+                  color: "#ffffff",
+                }
+              }).showToast();
 
             msj_consultar.append(mensaje);
 
     }else{
         let mensaje = document.createElement("div");
-            mensaje.innerHTML = `<p class="alert alert-danger">Debes ingresar datos para continuar</p>`;
+            mensaje.innerHTML = ""
+            Toastify({
+                text: "Debe ingresar datos para Continuar.",
+                duration: 2000,
+                gravity: "bottom",
+                position: "right",
+                style: {
+                  background: "#de1b02",
+                  color: "#ffffff",
+                }
+              }).showToast();
 
             msj_consultar.append(mensaje);
 
@@ -102,7 +147,7 @@ function consultarPrestamo(e){
 
 function mostrarConsulta(){
     let tabla = document.getElementById("tabla");
-
+    tabla.innerHTML = ""
     for(resultadoConsulta of consulta){
         let fila = document.createElement("tr");
         fila.innerHTML = `
@@ -113,11 +158,12 @@ function mostrarConsulta(){
                           <td>${resultadoConsulta.cuotas}</td>
                           <td>${resultadoConsulta.total}</td>
                           <td>${resultadoConsulta.pago_total}</td>
-                          <a href="#" class="btn btn-primary btn-prestamo" id="btn_consultar">¡Lo quiero!</a>`;
+                          <a href="#" class="btn btn-prestamo">¡Lo quiero!</a>
+                          <a href="index.html" class="btn btn-prestamo">Nueva Consulta</a>
+                          <p>También podés llevar tu prestamo en dólares.</p>`;
                           
                           tabla.append(fila);
         }
-    console.log(listado_usuarios[apellido]);
 
 
 }
@@ -128,20 +174,39 @@ function mostrarConsulta(){
 let btn_consultar = document.getElementById("btn_consultar");
 btn_consultar.addEventListener("click", consultarPrestamo);
 
-
-let msj_consultar = document.getElementById("msj-consultar");
-        if(monto != "" && cuotas != ""){
-            let mensaje = document.createElement("div");
-                mensaje.innerHTML = `<p class="alert alert-success">Consulta exitosa</p>`;
-
-                msg.append(mensaje);
-
-        }else{
-            let mensaje = document.createElement("div");
-                mensaje.innerHTML = `<p class="alert alert-danger">Debes ingresar datos para continuar</p>`;
-
-                msg.append(mensaje);
-
-        }
+$(document).ready(function() {
+  $('#btn_consultar').click(function() {
+      $('input[type="text"').val('');
+  });
+});
 
 
+fetch("https://api.bluelytics.com.ar/v2/latest")
+.then(response => response.json())
+  .then(data => {
+
+    let dolar_oficial = document.getElementById("dolar-oficial");
+    let contenido_dolar = document.createElement("ul");
+        contenido_dolar.innerHTML = `<li class="dolar-li">Compra:<span>$${data.oficial.value_buy}</span></li>
+                                     <li class="dolar-li">Venta:<span>$${data.oficial.value_sell}</span></li>`;
+
+                    dolar_oficial.append(contenido_dolar);
+    
+    let dolar_blue = document.getElementById("dolar-blue");
+    let contenido_dolar_blue = document.createElement("ul");
+        contenido_dolar_blue.innerHTML = `<li class="dolar-li">Compra:<span>$${data.blue.value_buy}</span></li>
+                                     <li class="dolar-li">Venta:<span>$${data.blue.value_sell}</span></li>`;
+                
+                    dolar_blue.append(contenido_dolar_blue);
+  })
+
+
+/*fetch("https://api.estadisticasbcra.com/usd_of", {
+  headers: {
+    Authorization: "BEARER eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTAyOTA5OTMsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJicmFuZG9wZXJlemluY2lhcnRlQGdtYWlsLmNvbSJ9.9R70IY5_8MosO4_3HqdLzCOCrgfPH2ryJBJJu6qKpyWQn8PN3xYnPFqCZmBPpxECvXE69veM9NOEcH5uKag5PA"
+  }
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+
+*/
